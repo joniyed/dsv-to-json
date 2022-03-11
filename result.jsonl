@@ -11,7 +11,7 @@
   "lastName": "Einstein",
   "gender": "Male",
   "middleName": "",
-  "dateOfBirth": "1955/04/18",
+  "dateOfBirth": "1955-04-18",
   "salary": "2000"
 }
 {
@@ -19,6 +19,6 @@
   "lastName": "Curie",
   "gender": "Female",
   "middleName": "Skłodowska |",
-  "dateOfBirth": "04-07-1934",
+  "dateOfBirth": "1934-07-04",
   "salary": "3000"
 }
