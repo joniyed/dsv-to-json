@@ -7,14 +7,28 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class CreateJsonFileWithMap {
 
 
+    /*Note
+     * Write jsonl file
+     * */
+    private static void writeToFile(File file, Map<String, Object> o) throws IOException {
+
+        FileWriter fileW = new FileWriter(file.getAbsolutePath(), true);
+
+        fileW.write(new Gson().toJson(o));
+        fileW.write(System.lineSeparator());
+
+        fileW.close();
+
+    }
+
+    /*Note
+     * Get Writable json data
+     * */
     private static List<Map<String, Object>> getJsonArray(List<String> headers, List<String> value, char delimiter) {
 
         List<Map<String, Object>> jsonArray = new ArrayList<>();
@@ -53,38 +67,23 @@ public class CreateJsonFileWithMap {
     }
 
 
-    public static void createJson(List<String> headers, List<String> value, char delimiter) {
+    /*Note
+     * CreateJson File
+     * */
+    public static void createJson(List<String> headers, List<String> value, char delimiter, File file) {
 
         List<Map<String, Object>> jsonArray = getJsonArray(headers, value, delimiter);
 
-        try {
+        jsonArray.forEach(o -> {
+            try {
 
-            File file = new File("result.jsonl");
-            //ensure new result file
-            if (file.exists()) {
-                file.delete();
+                /*append true means save with previous data*/
+                writeToFile(file, o);
+
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            file.createNewFile();
-
-            jsonArray.forEach(o -> {
-                try {
-
-                    /*append true means save with previous data*/
-                    FileWriter fileW = new FileWriter(file.getAbsolutePath(), true);
-
-                    fileW.write(new Gson().toJson(o));
-                    fileW.write(System.lineSeparator());
-
-                    fileW.close();
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            });
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        });
     }
 
 }
