@@ -1,4 +1,4 @@
-package Functions;
+package services;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,10 +9,12 @@ public class SplitWithDeliMiter {
 
         List<String> jsonValue = new ArrayList<>();
         int temp = 0;
-
         for (int i = 0; i < s.length(); i++) {
 
-            if (s.charAt(i) == del && s.charAt(i - 1) != ' ' && s.charAt(i + 1) != ' ') {
+            if (s.charAt(i) == del
+                    && (i != 0 && s.charAt(i - 1) != ' ')
+                    && (i != s.length() - 1 && s.charAt(i + 1) != ' ')
+            ) {
                 jsonValue.add(s.substring(temp, i));
                 temp = i + 1;
             } else if (i == s.length() - 1) {

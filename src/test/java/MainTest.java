@@ -1,10 +1,7 @@
-import Functions.GetValidDate;
-import Functions.ReadFile;
+import org.junit.jupiter.api.*;
+import services.GetValidDate;
+import services.ReadFile;
 import com.google.gson.Gson;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
@@ -20,15 +17,17 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MainTest {
 
+
     @BeforeAll
     public static void setupAll() {
-        System.out.println("Started Main Test");
+        System.out.println(Main.class.getSimpleName() + " class test started.");
     }
 
     @BeforeEach
     public void setup() {
-        System.out.println("---------------------------");
+        System.out.println("----------------------------------");
     }
+
 
     @Test
     @DisplayName("Test With DSV Input 1.txt")
@@ -48,6 +47,16 @@ public class MainTest {
         File outputFile = Main.getOutputFile("src/test/resource/output/dsv_input_2");
         testInputOutputFile(input, '|', outputFile);
 
+    }
+
+    @AfterEach
+    public void tearDown() {
+        System.out.println("----------------------------------");
+    }
+
+    @AfterAll
+    public static void tearDownAll() {
+        System.out.println("Test Done");
     }
 
     /*Note

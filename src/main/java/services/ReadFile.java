@@ -1,4 +1,4 @@
-package Functions;
+package services;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -8,8 +8,9 @@ public class ReadFile {
 
     public static void readFile(File file, char delimiter, File outputFile) {
 
+        System.out.println();
+        System.out.println("Started. please wait.....");
         try {
-            String sb = "";
             InputStream in = new FileInputStream(file);
             BufferedReader br = new BufferedReader(new InputStreamReader(in));
 
@@ -17,7 +18,7 @@ public class ReadFile {
             long count = 0;
             List<String> headers = new ArrayList<>();
             List<String> value = new ArrayList<>();
-            long thresold = 10000;
+            long threshold = 5000;
 
             while ((line = br.readLine()) != null) {
                 if (count == 0) {
@@ -29,7 +30,7 @@ public class ReadFile {
                 /*Note
                  * Read and Write only threshold value at a time
                  * */
-                if (count >= thresold && count % thresold == 0) {
+                if (count >= threshold && count % threshold == 0) {
                     CreateJsonFileWithMap.createJson(headers, value, delimiter, outputFile);
                     value.clear();
                     System.out.printf("%d json write into file.\n", count);
@@ -40,7 +41,7 @@ public class ReadFile {
             /*Note
              * Check count is less than threshold or not
              * */
-            if (count < thresold) {
+            if (count < threshold) {
                 CreateJsonFileWithMap.createJson(headers, value, delimiter, outputFile);
             }
 

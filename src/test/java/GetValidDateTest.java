@@ -1,5 +1,5 @@
-import Functions.GetValidDate;
 import org.junit.jupiter.api.*;
+import services.GetValidDate;
 
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -9,158 +9,66 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class GetValidDateTest {
 
+
     @BeforeAll
     public static void setupAll() {
-        System.out.println("Should Print Before All Tests");
+        System.out.println(GetValidDateTest.class.getSimpleName() + " class test started.");
     }
 
     @BeforeEach
     public void setup() {
-        System.out.println("Instantiating Contact Manager");
+        System.out.println("----------------------------------");
     }
 
     @Test
     @DisplayName("Should Check Valid Date.")
     public void shouldCheckValidDate() {
 
-        HashMap<String, Object> date = GetValidDate.isDate("2022/03/11");
-        assertEquals(LocalDate.of(2022, 3, 11), date.get("date"));
+        String date1 = "13-03-2022";
+        String _date1 = "03-13-2022";
+        String date2 = "2022-03-13";
+        String _date2 = "2022-13-03";
+        String date3 = "13/03/2022";
+        String _date3 = "03/13/2022";
+        String date4 = "2022/03/13";
+        String _date4 = "2022/13/03";
 
-        date = GetValidDate.isDate("11/03/2022");
-        assertEquals(LocalDate.of(2022, 3, 11), date.get("date"));
+        HashMap<String, Object> date = GetValidDate.isDate(date1);
+        assertEquals(LocalDate.of(2022, 3, 13), date.get("date"));
 
-        date = GetValidDate.isDate("2022-03-11");
-        assertEquals(LocalDate.of(2022, 3, 11), date.get("date"));
+        date = GetValidDate.isDate(_date1);
+        assertEquals(LocalDate.of(2022, 3, 13), date.get("date"));
 
-        date = GetValidDate.isDate("11-03-2022");
-        assertEquals(LocalDate.of(2022, 3, 11), date.get("date"));
+        date = GetValidDate.isDate(date2);
+        assertEquals(LocalDate.of(2022, 3, 13), date.get("date"));
+
+        date = GetValidDate.isDate(_date2);
+        assertEquals(LocalDate.of(2022, 3, 13), date.get("date"));
+
+        date = GetValidDate.isDate(date3);
+        assertEquals(LocalDate.of(2022, 3, 13), date.get("date"));
+
+        date = GetValidDate.isDate(_date3);
+        assertEquals(LocalDate.of(2022, 3, 13), date.get("date"));
+
+        date = GetValidDate.isDate(date4);
+        assertEquals(LocalDate.of(2022, 3, 13), date.get("date"));
+
+        date = GetValidDate.isDate(_date4);
+        assertEquals(LocalDate.of(2022, 3, 13), date.get("date"));
 
         date = GetValidDate.isDate("err/03/11");
         assertFalse((Boolean) date.get("isDate"));
 
     }
-//
-//    @Test
-//    @DisplayName("Should Not Create Contact When First Name is Null")
-//    public void shouldThrowRuntimeExceptionWhenFirstNameIsNull() {
-//        Assertions.assertThrows(RuntimeException.class, () -> {
-//            contactManager.addContact(null, "Doe", "0123456789");
-//        });
-//    }
-//
-//    @Test
-//    @DisplayName("Should Not Create Contact When Last Name is Null")
-//    public void shouldThrowRuntimeExceptionWhenLastNameIsNull() {
-//        Assertions.assertThrows(RuntimeException.class, () -> {
-//            contactManager.addContact("John", null, "0123456789");
-//        });
-//    }
-//
-//    @Test
-//    @DisplayName("Should Not Create Contact When Phone Number is Null")
-//    public void shouldThrowRuntimeExceptionWhenPhoneNumberIsNull() {
-//        Assertions.assertThrows(RuntimeException.class, () -> {
-//            contactManager.addContact("John", "Doe", null);
-//        });
-//    }
-//
-//    @Test
-//    @DisplayName("Should Create Contact")
-//    @EnabledOnOs(value = OS.MAC, disabledReason = "Should Run only on MAC")
-//    public void shouldCreateContactOnMAC() {
-//        contactManager.addContact("John", "Doe", "0123456789");
-//        assertFalse(contactManager.getAllContacts().isEmpty());
-//        assertEquals(1, contactManager.getAllContacts().size());
-//    }
-//
-//    @Test
-//    @DisplayName("Test Contact Creation on Developer Machine")
-//    public void shouldTestContactCreationOnDEV() {
-//        Assumptions.assumeTrue("DEV".equals(System.getProperty("ENV")));
-//        contactManager.addContact("John", "Doe", "0123456789");
-//        assertFalse(contactManager.getAllContacts().isEmpty());
-//        assertEquals(1, contactManager.getAllContacts().size());
-//    }
-//
-//    @Test
-//    @DisplayName("Phone Number should start with 0")
-//    public void shouldTestPhoneNumberFormat() {
-//        contactManager.addContact("John", "Doe", "0123456789");
-//        assertFalse(contactManager.getAllContacts().isEmpty());
-//        assertEquals(1, contactManager.getAllContacts().size());
-//    }
-//
-//
-//    @Nested
-//    class RepeatedTests {
-//        @DisplayName("Repeat Contact Creation Test 5 Times")
-//        @RepeatedTest(value = 5,
-//                name = "Repeating Contact Creation Test {currentRepetition} of {totalRepetitions}")
-//        public void shouldTestContactCreationRepeatedly() {
-//            contactManager.addContact("John", "Doe", "0123456789");
-//            assertFalse(contactManager.getAllContacts().isEmpty());
-//            assertEquals(1, contactManager.getAllContacts().size());
-//        }
-//    }
-//
-//    @Nested
-//    class ParameterizedTests {
-//        @DisplayName("Phone Number should match the required Format")
-//        @ParameterizedTest
-//        @ValueSource(strings = {"0123456789", "0123456798", "0123456897"})
-//        public void shouldTestPhoneNumberFormatUsingValueSource(String phoneNumber) {
-//            contactManager.addContact("John", "Doe", phoneNumber);
-//            assertFalse(contactManager.getAllContacts().isEmpty());
-//            assertEquals(1, contactManager.getAllContacts().size());
-//        }
-//
-//        @DisplayName("CSV Source Case - Phone Number should match the required Format")
-//        @ParameterizedTest
-//        @CsvSource({"0123456789", "0123456798", "0123456897"})
-//        public void shouldTestPhoneNumberFormatUsingCSVSource(String phoneNumber) {
-//            contactManager.addContact("John", "Doe", phoneNumber);
-//            assertFalse(contactManager.getAllContacts().isEmpty());
-//            assertEquals(1, contactManager.getAllContacts().size());
-//        }
-//
-//        @DisplayName("CSV File Source Case - Phone Number should match the required Format")
-//        @ParameterizedTest
-//        @CsvFileSource(resources = "/data.csv")
-//        public void shouldTestPhoneNumberFormatUsingCSVFileSource(String phoneNumber) {
-//            contactManager.addContact("John", "Doe", phoneNumber);
-//            assertFalse(contactManager.getAllContacts().isEmpty());
-//            assertEquals(1, contactManager.getAllContacts().size());
-//        }
-//    }
-//
-//    @DisplayName("Method Source Case - Phone Number should match the required Format")
-//    @ParameterizedTest
-//    @MethodSource("phoneNumberList")
-//    public void shouldTestPhoneNumberFormatUsingMethodSource(String phoneNumber) {
-//        contactManager.addContact("John", "Doe", phoneNumber);
-//        assertFalse(contactManager.getAllContacts().isEmpty());
-//        assertEquals(1, contactManager.getAllContacts().size());
-//    }
-//
-//    private static List<String> phoneNumberList() {
-//        return Arrays.asList("0123456789", "0123456798", "0123456897");
-//    }
-//
-//    @Test
-//    @DisplayName("Test Should Be Disabled")
-//    @Disabled
-//    public void shouldBeDisabled() {
-//        throw new RuntimeException("Test Should Not be executed");
-//    }
-
 
     @AfterEach
     public void tearDown() {
-        System.out.println("Should Execute After Each Test");
+        System.out.println("----------------------------------");
     }
 
     @AfterAll
     public static void tearDownAll() {
-        System.out.println("Should be executed at the end of the Test");
+        System.out.println("Test Done");
     }
 }

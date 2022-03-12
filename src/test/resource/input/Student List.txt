@@ -1,0 +1,17 @@
+id;firstname;lastname;age;dob;social_media;address;phone;email;cgpa;
+1;joniyed;bhuiyan;24;1997/15/10;jb.com;dhaka,bangladesh,joniyed@mail.com;3.91
+32;joniyed;bhuiyan;24;1997/15/10;jb.com;dhaka,bangladesh,joniyed@mail.com;3.91
+34;joniyed;bhuiyan;24;1997/15/10;jb.com;dhaka,bangladesh,joniyed@mail.com;3.91
+43;joniyed;bhuiyan;24;1997/15/10;jb.com;dhaka,bangladesh,joniyed@mail.com;3.91
+55;joniyed;bhuiyan;24;1997/15/10;jb.com;dhaka,bangladesh,joniyed@mail.com;3.91
+66;joniyed;bhuiyan;24;1997/15/10;jb.com;dhaka,bangladesh,joniyed@mail.com;3.91
+77;joniyed;bhuiyan;24;1997/15/10;jb.com;dhaka,bangladesh,joniyed@mail.com;3.91
+8734;joniyed;bhuiyan;24;1997/15/10;jb.com;dhaka,bangladesh,joniyed@mail.com;3.91
+13;joniyed;bhuiyan;24;1997/15/10;jb.com;dhaka,bangladesh,joniyed@mail.com;3.91
+134;joniyed;bhuiyan;24;1997/15/10;jb.com;dhaka,bangladesh,joniyed@mail.com;3.91
+2341;joniyed;bhuiyan;24;1997/15/10;jb.com;dhaka,bangladesh,joniyed@mail.com;3.91
+23431;joniyed;bhuiyan;24;1997/15/10;jb.com;dhaka,bangladesh,joniyed@mail.com;3.91
+1456;joniyed;bhuiyan;24;1997/15/10;jb.com;dhaka,bangladesh,joniyed@mail.com;3.91
+771;joniyed;bhuiyan;24;1997/15/10;jb.com;dhaka,bangladesh,joniyed@mail.com;3.91
+7541;joniyed;bhuiyan;24;1997/15/10;jb.com;dhaka,bangladesh,joniyed@mail.com;3.91
+3451;joniyed;bhuiyan;24;1997/15/10;jb.com;dhaka,bangladesh,joniyed@mail.com;3.91
