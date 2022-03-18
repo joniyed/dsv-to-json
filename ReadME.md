@@ -12,7 +12,7 @@ mvn package
 
 ## Run
 
-Use java -jar to run the packaged jar file
+Use java -jar command to run the packaged jar file
 
 ```bash
 java -jar target/dsv-to-json-1.0.0.jar
